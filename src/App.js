@@ -1,38 +1,51 @@
-//import styles from "./App.module.css";
 import { useState } from "react";
 import "./App.css";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [game, setGame] = useState("");
-  const [start, setStart] = useState("");
-  const [end, setEnd] = useState("");
-  const [budget, setBudget] = useState("");
-  const [language, setLanguage] = useState("");
+  const [selected, setSelected] = useState(false);
   const [campaigns, setCampaigns] = useState([]);
+  const [campaign, setCampaign] = useState({
+    name: "",
+    description: "",
+    game: "",
+    start: "",
+    end: "",
+    budget: "",
+    language: "",
+  });
+  const games = [
+    "League of Legends",
+    "Dota 2",
+    "Minecraft",
+    "Fortnite",
+    "Apex Legends",
+  ];
+  const languages = ["English", "German", "Spanish", "Japanese"];
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const newCampaign = {
-      name: name,
-      game: game,
-      startDate: start,
-      budget: budget,
-      language: language,
+      name: campaign.name,
+      game: campaign.game,
+      startDate: campaign.start,
+      budget: campaign.budget,
+      language: campaign.language,
     };
 
-    setCampaigns([...campaigns, newCampaign]);
+    setCampaigns([campaign, newCampaign]);
 
-    setName("");
-    setDescription("");
-    setGame("");
-    setStart("");
-    setEnd("");
-    setBudget("");
-    setLanguage("");
+    setCampaign({
+      name: "",
+      description: "",
+      game: "",
+      start: "",
+      end: "",
+      budget: "",
+      language: "",
+    });
+    setSelected(false);
   };
 
   return (
@@ -48,9 +61,8 @@ function App() {
                 className="inputText"
                 type="text"
                 maxlength="20"
-                onChange={(event) => setName(event.target.value)}
-                value={name}
-                required
+                onChange={(event) => setCampaign({ name: event.target.value })}
+                value={campaign.name}
               />
               <br></br>
             </div>
@@ -63,86 +75,52 @@ function App() {
                 rows="10"
                 cols="37"
                 maxlength="200"
-                onChange={(event) => setDescription(event.target.value)}
-                value={description}
+                onChange={(event) =>
+                  setCampaign({ description: event.target.value })
+                }
+                value={campaign.description}
               ></textarea>
               <br></br>
             </div>
             <div>
               <label>Choose the game:</label>
               <div>
-                <input
-                  type="radio"
-                  name="game"
-                  onClick={() => {
-                    setVisible(false);
-                    setGame("League of Legends");
-                  }}
-                  value="League of Legends"
-                />
-                <label>League of Legends</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="game"
-                  onClick={() => {
-                    setVisible(false);
-                    setGame("Dota2");
-                  }}
-                  value="Dota2"
-                />
-                <label>DOTA 2</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="game"
-                  onClick={() => {
-                    setVisible(false);
-                    setGame("Minecraft");
-                  }}
-                  value="Minecraft"
-                />
-                <label>Minecraft</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="game"
-                  onClick={() => {
-                    setVisible(false);
-                    setGame("Fortnite");
-                  }}
-                  value="Fortnite"
-                />
-                <label>Fortnite</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="game"
-                  value="Apex Legends"
-                  onClick={() => {
-                    setVisible(false);
-                    setGame("Apex Legends");
-                  }}
-                />
-                <label>Apex Legends</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  onClick={() => setVisible(true)}
-                  name="game"
-                />
-                <label>Other</label>
-                <input
-                  className={visible ? "inputText" : "hiddenInput"}
-                  placeholder="Other game"
-                  onChange={(event) => setGame(event.target.value)}
-                  value={game}
-                />
+                {games.map((game) => (
+                  <label>
+                    <div>
+                      {
+                        <input
+                          type="radio"
+                          name="game"
+                          onClick={() => {
+                            setVisible(false);
+                            setCampaign({ game: game });
+                          }}
+                          checked={selected}
+                        />
+                      }
+                      {game}
+                    </div>
+                  </label>
+                ))}
+                <div>
+                  <input
+                    type="radio"
+                    onClick={() => setVisible(true)}
+                    name="game"
+                  />
+                  <label>Other</label>
+                  <div>
+                    <input
+                      className={visible ? "inputText" : "hiddenInput"}
+                      placeholder="Other game"
+                      onChange={(event) =>
+                        setCampaign({ game: event.target.value })
+                      }
+                      value={campaign.game}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div>
@@ -150,17 +128,16 @@ function App() {
               <input
                 type="date"
                 id="start"
-                onChange={(event) => setStart(event.target.value)}
-                value={start}
-                required
+                onChange={(event) => setCampaign({ start: event.target.value })}
+                value={campaign.start}
               />
               <br />
               <label>End date: </label>
               <input
                 type="date"
                 id="end"
-                onChange={(event) => setEnd(event.target.value)}
-                value={end}
+                onChange={(event) => setCampaign({ end: event.target.value })}
+                value={campaign.end}
               />
             </div>
             <div>
@@ -173,9 +150,10 @@ function App() {
                 max="10000"
                 maxlength="5"
                 placeholder="up to 10 000 dollars"
-                onChange={(event) => setBudget(event.target.value)}
-                value={budget}
-                required
+                onChange={(event) =>
+                  setCampaign({ budget: event.target.value })
+                }
+                value={campaign.budget}
               />
               <br></br>
             </div>
@@ -185,16 +163,19 @@ function App() {
             </div>
             <div>
               <p>Select the campaign language:</p>
-              <select
-                className="select"
-                onChange={(event) => setLanguage(event.target.value)}
-                value={language}
-              >
-                <option>English</option>
-                <option>German</option>
-                <option>Spanish</option>
-                <option>Japanese</option>
-              </select>
+              <div>
+                <select
+                  className="select"
+                  onChange={(event) =>
+                    setCampaign({ language: event.target.value })
+                  }
+                  value={campaign.language}
+                >
+                  {languages.map((language) => (
+                    <option>{language}</option>
+                  ))}
+                </select>
+              </div>
             </div>
             <p />
             <div>
@@ -215,13 +196,13 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {campaigns.map((campaign, index) => (
-              <tr className="tr" key={index}>
-                <td className="td">{campaign.name}</td>
-                <td className="td">{campaign.game}</td>
-                <td className="td">{campaign.startDate}</td>
-                <td className="td">{campaign.budget}</td>
-                <td className="td">{campaign.language}</td>
+            {campaigns.map((c) => (
+              <tr className="tr">
+                <td className="td">{c.name}</td>
+                <td className="td">{c.game}</td>
+                <td className="td">{c.startDate}</td>
+                <td className="td">{c.budget}</td>
+                <td className="td">{c.language}</td>
               </tr>
             ))}
           </tbody>
