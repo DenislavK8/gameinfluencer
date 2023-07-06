@@ -1,5 +1,6 @@
-import styles from "./App.module.css";
+//import styles from "./App.module.css";
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -35,16 +36,16 @@ function App() {
   };
 
   return (
-    <div className={styles.App}>
+    <div className="App">
       <body>
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <fieldset>
             <legend>Campaign</legend>
             <div>
               <label>Name:</label>
               <br></br>
               <input
-                className={styles.inputText}
+                className="inputText"
                 type="text"
                 maxlength="20"
                 onChange={(event) => setName(event.target.value)}
@@ -57,7 +58,7 @@ function App() {
               <label>Description:</label>
               <br></br>
               <textarea
-                className={styles.textarea}
+                className="textarea"
                 name="description"
                 rows="10"
                 cols="37"
@@ -136,9 +137,8 @@ function App() {
                   name="game"
                 />
                 <label>Other</label>
-
                 <input
-                  className={visible ? styles.inputText : styles.hiddenInput}
+                  className={visible ? "inputText" : "hiddenInput"}
                   placeholder="Other game"
                   onChange={(event) => setGame(event.target.value)}
                   value={game}
@@ -167,7 +167,7 @@ function App() {
               <label>Campaign budget:</label>
               <br></br>
               <input
-                className={styles.inputText}
+                className="inputText"
                 type="number"
                 min="0"
                 max="10000"
@@ -186,7 +186,7 @@ function App() {
             <div>
               <p>Select the campaign language:</p>
               <select
-                className={styles.select}
+                className="select"
                 onChange={(event) => setLanguage(event.target.value)}
                 value={language}
               >
@@ -198,30 +198,30 @@ function App() {
             </div>
             <p />
             <div>
-              <button className={styles.submitButton} type="submit">
+              <button className="submitButton" type="submit">
                 Submit
               </button>
             </div>
           </fieldset>
         </form>
-        <table className={styles.table}>
+        <table className="table">
           <thead>
-            <tr className={styles.tr}>
-              <th className={styles.th}>Campaign name</th>
-              <th className={styles.th}>Campaign Game</th>
-              <th className={styles.th}>Campaign start date</th>
-              <th className={styles.th}>Campaign budget</th>
-              <th className={styles.th}>Campaign language</th>
+            <tr className="tr">
+              <th className="th">Campaign name</th>
+              <th className="th">Campaign Game</th>
+              <th className="th">Campaign start date</th>
+              <th className="th">Campaign budget</th>
+              <th className="th">Campaign language</th>
             </tr>
           </thead>
           <tbody>
             {campaigns.map((campaign, index) => (
-              <tr key={index} className={styles.tr}>
-                <td className={styles.td}>{campaign.name}</td>
-                <td className={styles.td}>{campaign.game}</td>
-                <td className={styles.td}>{campaign.startDate}</td>
-                <td className={styles.td}>{campaign.budget}</td>
-                <td className={styles.td}>{campaign.language}</td>
+              <tr className="tr" key={index}>
+                <td className="td">{campaign.name}</td>
+                <td className="td">{campaign.game}</td>
+                <td className="td">{campaign.startDate}</td>
+                <td className="td">{campaign.budget}</td>
+                <td className="td">{campaign.language}</td>
               </tr>
             ))}
           </tbody>
