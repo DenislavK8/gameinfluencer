@@ -1,8 +1,4 @@
 .App {
-  /*background-color: rgb(34, 26, 153);*/
-  /*background-image: url(C:\Users\Denislav Kirchev\Desktop\React\Gameinfluencer marketing campaign\campaign\src\Season_3_Battle_Pass_skins.webp);
-  /*background-image: url(C:\Users\Denislav Kirchev\Desktop\React\Gameinfluencer marketing campaign\campaign\src\flat,750x,075,f-pad,750x1000,f8f8f8.jpg);
-  background-repeat: no-repeat;*/
   background-image: url(C:\Users\Denislav Kirchev\Desktop\React\Gameinfluencer marketing campaign\campaign\src\flat,750x,075,f-pad,750x1000,f8f8f8.jpg),
     url(C:\Users\Denislav Kirchev\Desktop\React\Gameinfluencer marketing campaign\campaign\src\flat,750x,075,f-pad,750x1000,f8f8f8.jpg);
   background-position: left, right;
@@ -42,7 +38,9 @@
 
 .table,
 .tr,
-.th {
+.th,
+.tr,
+.td {
   margin: 0px 300px 100px 500px;
   border: 1px solid black;
   background-color: rgb(183, 219, 53);
