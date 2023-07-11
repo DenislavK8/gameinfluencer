@@ -1,4 +1,5 @@
 import React from "react";
+import "./Table.css";
 
 const Table = ({ campaigns }) => {
   return (
@@ -13,13 +14,13 @@ const Table = ({ campaigns }) => {
         </tr>
       </thead>
       <tbody>
-        {campaigns.map((c, index) => (
+        {campaigns.map((campaign, index) => (
           <tr className="tr" key={index}>
-            <td className="td">{c.name}</td>
-            <td className="td">{c.game}</td>
-            <td className="td">{c.start}</td>
-            <td className="td">{c.budget}</td>
-            <td className="td">{c.language}</td>
+            <td className="td">{campaign.name}</td>
+            <td className="td">{campaign.game}</td>
+            <td className="td">{campaign.start}</td>
+            <td className="td">{campaign.budget}</td>
+            <td className="td">{campaign.language}</td>
           </tr>
         ))}
       </tbody>
