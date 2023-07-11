@@ -7,6 +7,7 @@
 .textarea {
   background-color: rgb(191, 231, 139);
 }
+
 .inputText {
   width: 300px;
   background-color: rgb(191, 231, 139);
@@ -19,6 +20,7 @@
 .select {
   background-color: rgb(191, 231, 139);
 }
+
 .submitButton {
   width: 100px;
   height: 50px;
