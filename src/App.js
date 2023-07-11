@@ -12,6 +12,7 @@ const games = [
 ];
 
 const languages = ["English", "German", "Spanish", "Japanese"];
+
 function App() {
   const [campaigns, setCampaigns] = useState([]);
 
