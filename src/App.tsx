@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import Table from "./Table";
 import Form from "./Form";
+import { Campaign } from "./interfaces/campaign";
 
-const games = [
+const games: string[] = [
   "League of Legends",
   "Dota 2",
   "Minecraft",
@@ -11,12 +12,12 @@ const games = [
   "Apex Legends",
 ];
 
-const languages = ["English", "German", "Spanish", "Japanese"];
+const languages: string[] = ["English", "German", "Spanish", "Japanese"];
 
 function App() {
-  const [campaigns, setCampaigns] = useState([]);
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
 
-  const handleFormSubmit = (campaign) => {
+  const handleFormSubmit = (campaign: Campaign) => {
     setCampaigns([...campaigns, campaign]);
   };
 
