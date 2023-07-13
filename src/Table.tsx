@@ -1,12 +1,12 @@
 import React from "react";
 import "./Table.css";
-import { Campaign } from "./campaign";
+import { Campaign } from "./interfaces/campaign";
 
-interface Props {
+interface TableProps {
   campaigns: Campaign[];
 }
 
-const Table = ({ campaigns }: Props) => {
+const Table = ({ campaigns }: TableProps) => {
   return (
     <table className="table">
       <thead>

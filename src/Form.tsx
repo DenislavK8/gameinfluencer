@@ -1,23 +1,14 @@
 import { useState } from "react";
 import "./Form.css";
+import { Campaign } from "./interfaces/campaign";
 
-interface Campaign {
-  name: string;
-  description: string;
-  game: string;
-  start: string;
-  end: string;
-  budget: string;
-  language: string;
-}
-
-interface Props {
+interface FormProps {
   games: string[];
   languages: string[];
   onFormSubmit: (campaign: Campaign) => void;
 }
 
-const Form = ({ onFormSubmit, games, languages }: Props) => {
+const Form = ({ onFormSubmit, games, languages }: FormProps) => {
   const [visible, setVisible] = useState<boolean>(false);
   const [campaign, setCampaign] = useState<Campaign>({
     name: " ",

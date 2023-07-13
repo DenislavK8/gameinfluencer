@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Table from "./Table";
 import Form from "./Form";
-import { Campaign } from "./campaign";
+import { Campaign } from "./interfaces/campaign";
 
 const games: string[] = [
   "League of Legends",
