@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Form.css";
 
-const Form = ({ onFormSubmit, games, languages }) => {
-  const [visible, setVisible] = useState(false);
-  const [campaign, setCampaign] = useState({
-    name: "",
+interface Campaign {
+  name: string;
+  description: string;
+  game: string;
+  start: string;
+  end: string;
+  budget: string;
+  language: string;
+}
+
+interface Props {
+  games: string[];
+  languages: string[];
+  onFormSubmit: (campaign: Campaign) => void;
+}
+
+const Form = ({ onFormSubmit, games, languages }: Props) => {
+  const [visible, setVisible] = useState<boolean>(false);
+  const [campaign, setCampaign] = useState<Campaign>({
+    name: " ",
     description: "",
     game: "",
     start: "",
@@ -13,7 +29,7 @@ const Form = ({ onFormSubmit, games, languages }) => {
     language: "",
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     onFormSubmit(campaign);
     setCampaign({
@@ -37,7 +53,7 @@ const Form = ({ onFormSubmit, games, languages }) => {
           <input
             className="inputText"
             type="text"
-            maxLength="20"
+            maxLength={20}
             onChange={(event) =>
               setCampaign({ ...campaign, name: event.target.value })
             }
@@ -51,9 +67,9 @@ const Form = ({ onFormSubmit, games, languages }) => {
           <textarea
             className="textarea"
             name="description"
-            rows="10"
-            cols="37"
-            maxLength="200"
+            rows={10}
+            cols={37}
+            maxLength={200}
             onChange={(event) =>
               setCampaign({ ...campaign, description: event.target.value })
             }
@@ -71,7 +87,7 @@ const Form = ({ onFormSubmit, games, languages }) => {
                     type="radio"
                     name="game"
                     value={game}
-                    onClick={() => {
+                    onChange={() => {
                       setVisible(false);
                       setCampaign({ ...campaign, game });
                     }}
@@ -128,9 +144,9 @@ const Form = ({ onFormSubmit, games, languages }) => {
           <input
             className="inputText"
             type="number"
-            min="0"
-            max="10000"
-            maxLength="5"
+            min={0}
+            max={10000}
+            maxLength={5}
             placeholder="up to 10 000 dollars"
             onChange={(event) =>
               setCampaign({ ...campaign, budget: event.target.value })
