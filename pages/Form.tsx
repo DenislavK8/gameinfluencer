@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./Form.css";
 import { Campaign } from "./interfaces/campaign";
+import "./_app";
 
 interface FormProps {
   games: string[];
@@ -8,8 +8,8 @@ interface FormProps {
   onFormSubmit: (campaign: Campaign) => void;
 }
 
-const Form = ({ onFormSubmit, games, languages }: FormProps) => {
-  const [visible, setVisible] = useState<boolean>(false);
+export default function Form({ onFormSubmit, games, languages }: FormProps) {
+  const [visible, setVisible] = useState(false);
   const [campaign, setCampaign] = useState<Campaign>({
     name: " ",
     description: "",
@@ -175,6 +175,4 @@ const Form = ({ onFormSubmit, games, languages }: FormProps) => {
       </fieldset>
     </form>
   );
-};
-
-export default Form;
+}

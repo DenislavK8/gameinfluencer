@@ -1,3 +1,10 @@
+.App {
+  background-image: url("../../pages/styles/flat,750x,075,f-pad,750x1000,f8f8f8.jpg"),
+    url("../../pages/styles/flat,750x,075,f-pad,750x1000,f8f8f8.jpg");
+  background-position: left, right;
+  background-repeat: no-repeat;
+}
+
 .form {
   margin: 0px 500px 0px 500px;
   background-color: rgb(240, 124, 95);
@@ -30,4 +37,19 @@
 
 .submitButton:hover {
   background-color: rgb(153, 26, 26);
+}
+
+.table,
+.tr,
+.th,
+.tr,
+.td {
+  margin: 0px 300px 100px 500px;
+  border: 1px solid black;
+  background-color: rgb(183, 219, 53);
+}
+
+.table {
+  border-collapse: collapse;
+  width: 640px;
 }

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./App.css";
 import Table from "./Table";
 import Form from "./Form";
 import { Campaign } from "./interfaces/campaign";
+import "./_app";
 
 const games: string[] = [
   "League of Legends",
@@ -11,10 +11,10 @@ const games: string[] = [
   "Fortnite",
   "Apex Legends",
 ];
-
+//"../../built/local/tsc.js"
 const languages: string[] = ["English", "German", "Spanish", "Japanese"];
 
-function App() {
+export default function App() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
 
   const handleFormSubmit = (campaign: Campaign) => {
@@ -23,16 +23,12 @@ function App() {
 
   return (
     <div className="App">
-      <body>
-        <Form
-          onFormSubmit={handleFormSubmit}
-          games={games}
-          languages={languages}
-        />
-        <Table campaigns={campaigns} />
-      </body>
+      <Form
+        onFormSubmit={handleFormSubmit}
+        games={games}
+        languages={languages}
+      />
+      <Table campaigns={campaigns} />
     </div>
   );
 }
-
-export default App;

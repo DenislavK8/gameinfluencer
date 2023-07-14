@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "module": "system",
+    "module": "amd",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "removeComments": true,
@@ -10,8 +10,20 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
+      "@/styles/*": ["styles/*"],
+      "@/components/*": ["components/*"],
       "web-vitals": ["path/to/web-vitals"]
-    }
+    },
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

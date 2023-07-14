@@ -1,6 +1,6 @@
 import React from "react";
-import "./Table.css";
 import { Campaign } from "./interfaces/campaign";
+import "./_app";
 
 interface TableProps {
   campaigns: Campaign[];
