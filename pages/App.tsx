@@ -11,7 +11,7 @@ const games: string[] = [
   "Fortnite",
   "Apex Legends",
 ];
-//"../../built/local/tsc.js"
+
 const languages: string[] = ["English", "German", "Spanish", "Japanese"];
 
 export default function App() {
