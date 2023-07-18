@@ -1,0 +1,33 @@
+.form {
+  margin: 0px 500px 0px 500px;
+  background-color: rgb(240, 124, 95);
+  border: 1px solid black;
+}
+
+.textarea {
+  background-color: rgb(191, 231, 139);
+}
+
+.inputText {
+  width: 300px;
+  background-color: rgb(191, 231, 139);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.select {
+  background-color: rgb(191, 231, 139);
+}
+
+.submitButton {
+  width: 100px;
+  height: 50px;
+  background-color: rgb(191, 231, 139);
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: rgb(153, 26, 26);
+}

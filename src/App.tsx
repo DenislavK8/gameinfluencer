@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Table from "./Table";
-import Form from "./Form";
+import Table from "./Table/Table";
+import Form from "./Form/Form";
 import { Campaign } from "./interfaces/campaign";
-//import "../pages/_app";
 
 const games: string[] = [
   "League of Legends",

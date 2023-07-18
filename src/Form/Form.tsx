@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Campaign } from "./interfaces/campaign";
+import { Campaign } from "../interfaces/campaign";
+import styles from "./Form.module.css";
 
 interface FormProps {
   games: string[];
@@ -34,14 +35,14 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <fieldset>
         <legend>Campaign</legend>
         <div>
           <label>Name:</label>
           <br />
           <input
-            className="inputText"
+            className={styles.inputText}
             type="text"
             maxLength={20}
             onChange={(event) =>
@@ -55,7 +56,7 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
           <label>Description:</label>
           <br />
           <textarea
-            className="textarea"
+            className={styles.textarea}
             name="description"
             rows={10}
             cols={37}
@@ -96,7 +97,7 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
               <label>Other</label>
               <div>
                 <input
-                  className={visible ? "inputText" : "hiddenInput"}
+                  className={visible ? styles.inputText : styles.hiddenInput}
                   placeholder="Other game"
                   onChange={(event) =>
                     setCampaign({ ...campaign, game: event.target.value })
@@ -132,7 +133,7 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
           <label>Campaign budget:</label>
           <br />
           <input
-            className="inputText"
+            className={styles.inputText}
             type="number"
             min={0}
             max={10000}
@@ -153,7 +154,7 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
           <p>Select the campaign language:</p>
           <div>
             <select
-              className="select"
+              className={styles.select}
               onChange={(event) =>
                 setCampaign({ ...campaign, language: event.target.value })
               }
@@ -167,7 +168,7 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
         </div>
         <p />
         <div>
-          <button className="submitButton" type="submit">
+          <button className={styles.submitButton} type="submit">
             Submit
           </button>
         </div>
