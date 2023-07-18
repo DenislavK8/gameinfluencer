@@ -1,7 +1,6 @@
 import { useState } from "react";
-import "./App.css";
-import Table from "./Table";
-import Form from "./Form";
+import Table from "./Table/Table";
+import Form from "./Form/Form";
 import { Campaign } from "./interfaces/campaign";
 
 const games: string[] = [
@@ -14,7 +13,7 @@ const games: string[] = [
 
 const languages: string[] = ["English", "German", "Spanish", "Japanese"];
 
-function App() {
+export default function App() {
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
 
   const handleFormSubmit = (campaign: Campaign) => {
@@ -23,16 +22,12 @@ function App() {
 
   return (
     <div className="App">
-      <body>
-        <Form
-          onFormSubmit={handleFormSubmit}
-          games={games}
-          languages={languages}
-        />
-        <Table campaigns={campaigns} />
-      </body>
+      <Form
+        onFormSubmit={handleFormSubmit}
+        games={games}
+        languages={languages}
+      />
+      <Table campaigns={campaigns} />
     </div>
   );
 }
-
-export default App;
