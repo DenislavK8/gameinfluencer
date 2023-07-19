@@ -5,6 +5,7 @@
 }
 
 .textarea {
+  width: 300px;
   background-color: rgb(191, 231, 139);
 }
 
@@ -18,13 +19,13 @@
 }
 
 .select {
+  width: 300px;
   background-color: rgb(191, 231, 139);
 }
 
 .submitButton {
   width: 100px;
   height: 50px;
-  background-color: rgb(191, 231, 139);
   cursor: pointer;
 }
 

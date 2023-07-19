@@ -1,6 +1,18 @@
 import { useState } from "react";
 import { Campaign } from "../interfaces/campaign";
 import styles from "./Form.module.css";
+import Button from "@mui/material/Button";
+import Radio from "@mui/material/Radio";
+import Input from "@mui/base/Input";
+import TextField from "@mui/material/TextField";
+import {
+  FormControlLabel,
+  Checkbox,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 
 interface FormProps {
   games: string[];
@@ -41,10 +53,10 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
         <div>
           <label>Name:</label>
           <br />
-          <input
+          <TextField
             className={styles.inputText}
             type="text"
-            maxLength={20}
+            inputProps={{ maxLength: 20 }}
             onChange={(event) =>
               setCampaign({ ...campaign, name: event.target.value })
             }
@@ -55,17 +67,15 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
         <div>
           <label>Description:</label>
           <br />
-          <textarea
+          <TextField
             className={styles.textarea}
             name="description"
-            rows={10}
-            cols={37}
-            maxLength={200}
+            inputProps={{ maxLength: 200 }}
             onChange={(event) =>
               setCampaign({ ...campaign, description: event.target.value })
             }
             value={campaign.description}
-          ></textarea>
+          ></TextField>
           <br />
         </div>
         <div>
@@ -74,10 +84,11 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
             {games.map((game) => (
               <label key={game}>
                 <div>
-                  <input
-                    type="radio"
+                  <Radio
                     name="game"
                     value={game}
+                    size="small"
+                    color="success"
                     onChange={() => {
                       setVisible(false);
                       setCampaign({ ...campaign, game });
@@ -89,14 +100,15 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
               </label>
             ))}
             <div>
-              <input
-                type="radio"
+              <Radio
                 onClick={() => setVisible(true)}
                 name="game"
+                size="small"
+                color="success"
               />
               <label>Other</label>
               <div>
-                <input
+                <Input
                   className={visible ? styles.inputText : styles.hiddenInput}
                   placeholder="Other game"
                   onChange={(event) =>
@@ -110,7 +122,7 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
         </div>
         <div>
           <label>Start date:</label>
-          <input
+          <Input
             type="date"
             id="start"
             onChange={(event) =>
@@ -120,7 +132,7 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
           />
           <br />
           <label>End date:</label>
-          <input
+          <Input
             type="date"
             id="end"
             onChange={(event) =>
@@ -132,45 +144,58 @@ export default function Form({ onFormSubmit, games, languages }: FormProps) {
         <div>
           <label>Campaign budget:</label>
           <br />
-          <input
+          <TextField
             className={styles.inputText}
             type="number"
-            min={0}
-            max={10000}
-            maxLength={5}
-            placeholder="up to 10 000 dollars"
+            label="Budget (up to 10,000 dollars)"
+            variant="outlined"
+            inputProps={{ min: 0, max: 10000, maxLength: 5 }}
+            value={campaign.budget}
             onChange={(event) =>
               setCampaign({ ...campaign, budget: event.target.value })
             }
-            value={campaign.budget}
           />
           <br />
         </div>
         <div>
-          <input type="checkbox" />
-          <label>Pay with Crypto currency</label>
+          <FormControlLabel
+            control={<Checkbox />}
+            label="Pay with Crypto currency"
+          />
         </div>
         <div>
-          <p>Select the campaign language:</p>
-          <div>
-            <select
-              className={styles.select}
+          <FormControl className={styles.select}>
+            <InputLabel>Select the campaign language:</InputLabel>
+            <Select
+              value={campaign.language}
               onChange={(event) =>
                 setCampaign({ ...campaign, language: event.target.value })
               }
-              value={campaign.language}
             >
               {languages.map((language) => (
-                <option key={language}>{language}</option>
+                <MenuItem
+                  className={styles.select}
+                  key={language}
+                  value={language}
+                >
+                  {language}
+                </MenuItem>
               ))}
-            </select>
-          </div>
+            </Select>
+          </FormControl>
         </div>
         <p />
         <div>
-          <button className={styles.submitButton} type="submit">
+          <Button
+            className={styles.submitButton}
+            variant="contained"
+            color="success"
+            size="large"
+            type="submit"
+            disableElevation
+          >
             Submit
-          </button>
+          </Button>
         </div>
       </fieldset>
     </form>
