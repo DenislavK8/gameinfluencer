@@ -1,6 +1,7 @@
 import React from "react";
 import { Campaign } from "../interfaces/campaign";
 import styles from "./Table.module.css";
+import { TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 
 interface TableProps {
   campaigns: Campaign[];
@@ -9,26 +10,26 @@ interface TableProps {
 const Table = ({ campaigns }: TableProps) => {
   return (
     <table className={styles.table}>
-      <thead>
-        <tr className={styles.tr}>
-          <th className={styles.td}>Campaign name</th>
-          <th className={styles.td}>Campaign Game</th>
-          <th className={styles.td}>Campaign start date</th>
-          <th className={styles.td}>Campaign budget</th>
-          <th className={styles.td}>Campaign language</th>
-        </tr>
-      </thead>
-      <tbody>
+      <TableHead>
+        <TableRow className={styles.tr}>
+          <TableCell className={styles.td}>Campaign name</TableCell>
+          <TableCell className={styles.td}>Campaign Game</TableCell>
+          <TableCell className={styles.td}>Campaign start date</TableCell>
+          <TableCell className={styles.td}>Campaign budget</TableCell>
+          <TableCell className={styles.td}>Campaign language</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
         {campaigns.map((campaign, index) => (
-          <tr className={styles.tr} key={index}>
-            <td className={styles.td}>{campaign.name}</td>
-            <td className={styles.td}>{campaign.game}</td>
-            <td className={styles.td}>{campaign.start}</td>
-            <td className={styles.td}>{campaign.budget}</td>
-            <td className={styles.td}>{campaign.language}</td>
-          </tr>
+          <TableRow className={styles.tr} key={index}>
+            <TableCell className={styles.td}>{campaign.name}</TableCell>
+            <TableCell className={styles.td}>{campaign.game}</TableCell>
+            <TableCell className={styles.td}>{campaign.start}</TableCell>
+            <TableCell className={styles.td}>{campaign.budget}</TableCell>
+            <TableCell className={styles.td}>{campaign.language}</TableCell>
+          </TableRow>
         ))}
-      </tbody>
+      </TableBody>
     </table>
   );
 };
